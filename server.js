@@ -1,18 +1,44 @@
+const get = require("./get");
+const post = require("./post");
+
 const http = require("http");
+const url = require("url");
+const fs = require("fs");
+const querystring = require("querystring");
 
-const server = http.createServer(function(req, res) {
-    res.setHeader("Content-Type", "application/json");
 
-    // this is for CORS. We are allowing this response to be sent back to anywhere; Any brower.
-    res.setHeader("Access-Control-Allow-Origin", "*"); 
-    res.writeHead(200); //status code HTTP 200/ OK
 
-    //data must be a string
-    let dataObj = {"name":"Bob", "title":"worker"};
-    let data = JSON.stringify(dataObj);
 
-    //this is what you call in the end to send everything. The data param has to be a string.
-    res.end(data);
+//references: https://dev.to/alexmercedcoder/basics-of-building-a-crud-api-with-node-no-framework-32c5
+//https://usefulangle.com/post/91/nodejs-get-url-parameters
+//https://usefulangle.com/post/89/nodejs-routing
+
+const server = http.createServer((request, response) => {
+
+    switch(request.method) {
+        case "GET":
+            get(request, response);
+            break;
+
+        case "POST":
+            post(request, response);
+            break;
+
+
+
+    default:
+        response.statusCode = 400;
+        response.write("No Response");
+        response.end()
+
+
+
+
+
+
+
+
+    }
 
 });
 
