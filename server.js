@@ -12,6 +12,7 @@ const querystring = require("querystring");
 //references: https://dev.to/alexmercedcoder/basics-of-building-a-crud-api-with-node-no-framework-32c5
 //https://usefulangle.com/post/91/nodejs-get-url-parameters
 //https://usefulangle.com/post/89/nodejs-routing
+//https://www.delftstack.com/howto/node.js/rendering-html-files-in-node-js/
 
 const server = http.createServer((request, response) => {
 
